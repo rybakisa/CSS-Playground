@@ -22,12 +22,22 @@ export default {
   },
   methods: {
     reset() {
-        this.perspective = 100
-        this.rotateX = 0
-        this.rotateY = 0
-        this.rotateZ = 0
-    }
-  }
+      this.perspective = 100;
+      this.rotateX = 0;
+      this.rotateY = 0;
+      this.rotateZ = 0;
+    },
+    copy() {
+      navigator.clipboard
+        .writeText(this.box.transform)
+        .then(() => {
+          console.log("Text is on the clipboard.");
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    },
+  },
 };
 </script>>
 
@@ -59,7 +69,7 @@ const count = ref(0);
         <input type="range" min="-180" max="180" v-model="rotateZ" />
 
         <button type="button" @click.prevent="reset">Reset</button>
-        <button type="button">Copy</button>
+        <button type="button" @click.prevent="copy">Copy</button>
       </div>
     </section>
     <section class="output">

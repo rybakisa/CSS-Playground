@@ -20,6 +20,14 @@ export default {
       };
     },
   },
+  methods: {
+    reset() {
+        this.perspective = 100
+        this.rotateX = 0
+        this.rotateY = 0
+        this.rotateZ = 0
+    }
+  }
 };
 </script>>
 
@@ -50,7 +58,7 @@ const count = ref(0);
         <label>rotateZ: {{ rotateZ }} deg; </label>
         <input type="range" min="-180" max="180" v-model="rotateZ" />
 
-        <button type="button">Reset</button>
+        <button type="button" @click.prevent="reset">Reset</button>
         <button type="button">Copy</button>
       </div>
     </section>
